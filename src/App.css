@@ -23,7 +23,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.nabbar_wrapper a {
+  padding-left: 10px;
+  color:aliceblue;
+}
+.nabbar_wrapper a:hover{
+  color:beige;
+  text-decoration: none;
+}
 .App-link {
   color: #61dafb;
 }
