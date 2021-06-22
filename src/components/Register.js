@@ -1,11 +1,27 @@
 import React, { useState } from "react";
+import {useHistory} from "react-router-dom";
 function Register() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    function signUp(){
+    const history = useHistory();
+
+  async function signUp(){
         let item = {name,email,password}
-        console.warn(name,email,password)
+       let result = await fetch("http://127.0.0.1:8000/api/register",{
+            method:'POST',
+            headers:{
+                "Content-Type":"application/json",
+                "Accept":"application/json",
+            },
+            body:JSON.stringify(item)
+        });
+       result = await result.json();
+       console.warn('result',result)
+       localStorage.setItem("user-info", JSON.stringify(result));
+       history.push("/add");
+        
+        
     }
     return (
         <div className="contanier">
